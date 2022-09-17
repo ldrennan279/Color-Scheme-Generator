@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(237, 237, 237);
+}
+.main-container{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+}
+header{
+    margin: 0;
+    padding: 3px;
+}
+.color{
+    height: 33px;
+    padding: 7px;
+}
+.colorSchemeDropDown, .getColorSchemebtn{
+    padding: 7px;
+}
+.mainSection{
+    margin: 0;
+    padding: 0;
+}
+.section1, .section2{
+    width: 100%;
+    display: flex;
+}
+.colorWindow{
+    width: 20%;
+    height: 350px;
+}
+.rgb-info{
+    width: 20%;
+    height: 20px;
+}
