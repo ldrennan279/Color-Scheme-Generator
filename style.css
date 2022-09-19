@@ -39,4 +39,21 @@ header{
 .rgb-info{
     width: 20%;
     height: 20px;
+    padding: 5px 15px;
+    text-align: center;
+}
+.color1{
+    background: #ffca29;
+}
+.color2{
+    background: #23aee1;
+}
+.color3{
+    background: #009726;
+}
+.color4{
+    background: #6e0047;
+}
+.color5{
+    background: #00104c;
 }
