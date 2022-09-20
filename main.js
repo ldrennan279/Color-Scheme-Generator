@@ -36,6 +36,7 @@ container.innerHTML = `
 
 const userColor = document.getElementById("userColor")
 let color = ""
+let choices = "monochrome"
 
 const rgb1 = document.getElementById("rgb1")
 const rgb2 = document.getElementById("rgb2")
@@ -54,9 +55,9 @@ userColor.addEventListener("change", function(){
     colorDisplay1.style.backgroundColor = color
 })
 
-fetch("")
+fetch("https://www.thecolorapi.com/scheme?color + choices")
     .then(res => res.json())
-    .then(data => )
+    .then(data => console.log(data))
 
 
 

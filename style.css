@@ -27,7 +27,7 @@ header{
 .mainSection{
     margin: 0;
     padding: 0;
-}
+}  
 .section1, .section2{
     width: 100%;
     display: flex;
