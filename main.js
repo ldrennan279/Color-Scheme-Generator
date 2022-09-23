@@ -2,8 +2,9 @@ const container = document.getElementById("container")
 
 container.innerHTML = `
     <header class="header">
+        <h3 class="heading">Colour Generator</h3>
         <input type="color" class="color" id="userColor">
-        <select name="Colour Scheme" class="colorSchemeDropDown">
+        <select name="Colour Scheme" id="colorSchemeDropDown">
             <option value="monochrome">monochrome</option>
             <option value="monochrome-dark">monochrome-dark</option>
             <option value="monochrome-light">monochrome-light</option>
@@ -17,47 +18,50 @@ container.innerHTML = `
     </header>
 
     <main class="mainSection">
-        <div class="section1">
-            <div class="colorWindow color1" id="colorDisplay1"></div>
-            <div class="colorWindow color2" id="colorDisplay2"></div>
-            <div class="colorWindow color3" id="colorDisplay3"></div>
-            <div class="colorWindow color4" id="colorDisplay4"></div>
-            <div class="colorWindow color5" id="colorDisplay5"></div>
+        <div id="section1">
         </div>
-        <div class="section2">
-            <div class="rgb-info"><p id="rgb1">#FFCA29</p></div>
-            <div class="rgb-info"><p id="rgb2">#23AEE1</p></div>
-            <div class="rgb-info"><p id="rgb3">#009726</p></div>
-            <div class="rgb-info"><p id="rgb4">#6E0047</p></div>
-            <div class="rgb-info"><p id="rgb4">#00104C</p></div>
+        <div id="section2">      
         </div>
     </main>
 `
 
 const userColor = document.getElementById("userColor")
-let color = ""
-let choices = "monochrome"
+const colorSchemeDropDown = document.getElementById("colorSchemeDropDown")
+const getColorSchemeBtn = document.getElementById("get-color-scheme-btn")
+const section1 = document.getElementById("section1")
+const section2 = document.getElementById("section2")
+let colorSeleceted = ""
+let colorScheme = ""
 
-const rgb1 = document.getElementById("rgb1")
-const rgb2 = document.getElementById("rgb2")
-const rgb3 = document.getElementById("rgb3")
-const rgb4 = document.getElementById("rgb4")
-const rgb5 = document.getElementById("rgb5")
-const colorDisplay1 = document.getElementById("colorDisplay1")
-const colorDisplay2 = document.getElementById("colorDisplay2")
-const colorDisplay3 = document.getElementById("colorDisplay3")
-const colorDisplay4 = document.getElementById("colorDisplay4")
-const colorDisplay5 = document.getElementById("colorDisplay5")
-
-userColor.addEventListener("change", function(){
-    color = userColor.value
-    rgb1.innerText = `${color.toUpperCase()}`
-    colorDisplay1.style.backgroundColor = color
+getColorSchemeBtn.addEventListener("click",function(){
+    colorSeleceted = userColor.value.slice(1)
+    colorScheme = colorSchemeDropDown.options[colorSchemeDropDown.selectedIndex].text
+    fetch(`https://www.thecolorapi.com/scheme?hex=${colorSeleceted}&mode=${colorScheme}&count=5`)
+        .then(res => res.json())
+        .then(data => {
+            let colorsHtml = ''
+            let hexHtml = ''
+            for (let color of data.colors){
+                colorsHtml += `
+                    <div class="colorWindow" style="background-color:${color.hex.value}">
+                    </div>
+                `
+                hexHtml += `
+                    <div class="rgb-info">
+                        ${color.hex.value}
+                    </div>
+                `
+            }
+            console.log(colorsHtml)
+            section1.innerHTML = colorsHtml
+            console.log(hexHtml)
+            section2.innerHTML = hexHtml
+        }) 
+       
 })
 
-fetch("https://www.thecolorapi.com/scheme?color + choices")
-    .then(res => res.json())
-    .then(data => console.log(data))
+
+
 
 
 
