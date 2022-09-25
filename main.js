@@ -48,8 +48,8 @@ getColorSchemeBtn.addEventListener("click",function(){
                     </div>
                 `
                 hexHtml += `
-                    <div class="rgb-info">
-                        ${color.hex.value}
+                    <div class="rgb-info" id="rgbInfo">
+                        <p id="colorData">${color.hex.value}</p>
                     </div>
                 `
             }
@@ -59,7 +59,6 @@ getColorSchemeBtn.addEventListener("click",function(){
         
 })
 
-    
 
 
 
