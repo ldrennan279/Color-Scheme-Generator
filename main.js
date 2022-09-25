@@ -32,6 +32,7 @@ const section1 = document.getElementById("section1")
 const section2 = document.getElementById("section2")
 let colorSeleceted = ""
 let colorScheme = ""
+let colorDataRec = ""
 
 getColorSchemeBtn.addEventListener("click",function(){
     colorSeleceted = userColor.value.slice(1)
@@ -43,7 +44,7 @@ getColorSchemeBtn.addEventListener("click",function(){
             let hexHtml = ''
             for (let color of data.colors){
                 colorsHtml += `
-                    <div class="colorWindow" style="background-color:${color.hex.value}">
+                    <div class="colorWindow" style="background-color:${color.hex.value}" ">
                     </div>
                 `
                 hexHtml += `
@@ -52,16 +53,13 @@ getColorSchemeBtn.addEventListener("click",function(){
                     </div>
                 `
             }
-            console.log(colorsHtml)
             section1.innerHTML = colorsHtml
-            console.log(hexHtml)
             section2.innerHTML = hexHtml
         }) 
-       
+        
 })
 
-
-
+    
 
 
 
